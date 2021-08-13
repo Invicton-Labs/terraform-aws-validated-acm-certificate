@@ -10,7 +10,7 @@ output "certificate_validation" {
   description = "The AWS ACM Certificate Validation resource that was created to validate the certificate."
   value       = aws_acm_certificate_validation.cert
 }
-output "done" {
+output "complete" {
   description = "An output that is only resolved once all resources in this module have finished being created. Used for 'depends_on' fields that depend on this module."
   depends_on = [
     aws_acm_certificate.cert,
