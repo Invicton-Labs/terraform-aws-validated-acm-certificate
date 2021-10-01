@@ -9,19 +9,6 @@ terraform {
   }
 }
 
-locals {
-  distinct_zone_ids = distinct(concat(
-    [var.primary_domain_hosted_zone_id],
-    values(var.subject_alternative_names)
-  ))
-}
-data "aws_route53_zone" "zones" {
-  provider = aws.hosted_zones
-  // Create a custom mapping so changes in list ordering don't re-create the data
-  for_each = zipmap(local.distinct_zone_ids, local.distinct_zone_ids)
-  zone_id  = var.primary_domain_hosted_zone_id
-}
-
 // Create the certificate
 resource "aws_acm_certificate" "cert" {
   provider                  = aws.certificate
