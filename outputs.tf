@@ -19,3 +19,7 @@ output "complete" {
   ]
   value = true
 }
+output "certificate_arn" {
+  description = "The ARN of the validated certificate. Will not return until the validation is complete."
+  value       = aws_acm_certificate_validation.cert.certificate_arn
+}
