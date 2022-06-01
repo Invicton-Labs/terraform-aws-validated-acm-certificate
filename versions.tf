@@ -4,7 +4,7 @@ terraform {
     aws = {
       source                     = "hashicorp/aws"
       version                    = ">= 4.15"
-      conficonfiguration_aliases = [aws.hosted_zones, aws.certificate]
+      configuration_aliases = [aws.hosted_zones, aws.certificate]
     }
   }
 }
